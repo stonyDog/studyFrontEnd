@@ -45,7 +45,122 @@ console.log(s.length);
 console.log(s.toUpperCase());
 //小文字変換
 console.log(s.toLowerCase());
-//切り抜き
+//切り抜き 0-5文字目
 console.log(s.substring(0,5));
+//分割
+console.log(s.split(''));
 
-//2222
+
+//Arrays -variables that hold multiple values
+
+const numbers = new Array(1,2,3,4,5);
+const fruits = ['apples','oranges','pears']
+
+console.log(numbers);
+console.log(fruits);
+
+//配列の1番目を参照
+console.log(fruits[1]);
+
+//配列の3番目にgrapesを追加
+fruits[3]='grapes';
+console.log(fruits);
+
+//配列の最後にmangosを追加
+fruits.push('mangos');
+console.log(fruits);
+
+//配列の最初にstrawberriesを追加
+fruits.unshift('strawberries');
+console.log(fruits);
+
+//配列の最後を削除
+fruits.pop();
+console.log(fruits);
+
+//引数が配列ならtrueを返す
+console.log(Array.isArray(fruits));
+
+//fruitsに引数があるなら、そのindexを返す
+console.log(fruits.indexOf('pears'));
+
+
+//object志向?
+const person ={
+    firstName: 'John',
+    lastName: 'Doe',
+    age:30,
+    hobbies:['music','movies','sports'],
+    address:{
+        street:'50 main st',
+        city:'Boston',
+        state:'MA'
+    }
+}
+//上記の記述は以下で置き換え可能らしい
+//const {firstName,lastName}=person;
+
+console.log(person);
+console.log(person.firstName,person.lastName);
+console.log(person.hobbies[1])
+//objectへの追加
+person.email = 'john@gmail.com'
+console.log(person);
+
+
+const todos = [
+    {
+        id:1,
+        text:'Take out trash',
+        isCompleted:true
+    },
+    {
+        id:2,
+        text:'Meeting with boss',
+        isCompleted:true
+    },
+    {
+        id:3,
+        text:'Dentist appt',
+        isCompleted:true
+    }
+]
+console.log(todos);
+
+//json構文というらしい
+const todoJSON = JSON.stringify(todos);
+console.log(todoJSON);
+
+//For
+for(let i = 0;i<10;i++){
+    console.log(`For Loop Number: ${i}`);
+}
+
+//while
+let i=0;
+while(i<10){
+    console.log(`While Loop Number: ${i}`);
+    i++;
+}
+//-----------------------------------
+//配列の全要素を表示する方法
+for(let j = 0;j<todos.length;j++){
+    console.log(todos[j].text);
+}
+for(let todo of todos){
+    console.log(todo.id);
+}
+
+//forEach, map, filter(ここの関数は不明)
+todos.forEach(function(todo){
+    console.log(todo.text);
+});
+
+const todoText = todos.map(function(todo){
+    return todo.text;
+});
+console.log(todoText);
+//-----------------------------------
+
+
+//44.44
