@@ -117,7 +117,7 @@ const todos = [
     {
         id:2,
         text:'Meeting with boss',
-        isCompleted:true
+        isCompleted:false
     },
     {
         id:3,
@@ -162,5 +162,114 @@ const todoText = todos.map(function(todo){
 console.log(todoText);
 //-----------------------------------
 
+//isCompleted = trueの、配列を取り出す。(ここの関数は不明)
+const todoCompleted = todos.filter(function(todo){
+    return todo.isCompleted === true;
+});
+console.log(todoCompleted);
 
-//44.44
+//isCompleted = trueの、要素を取り出す。(ここの関数は不明)
+const todoCompleted1 = todos.filter(function(todo){
+    return todo.isCompleted === true;
+}).map(function(todo){
+    return todo.text;
+})
+console.log(todoCompleted1);
+
+//if
+const x1= 9;
+if(x1==10){
+    console.log('x1 is 10');
+}else if (x1>10) {
+    console.log('x1 is greater than 10');
+}else{
+    console.log('x1 is less than 10');
+}
+//===は、型まで比較
+if(x1==='10'){
+    console.log('x1 is 10');
+}
+
+//3項演算子
+const color = (x1>10)? 'red':'blue';
+console.log(color);
+
+//switch
+switch(color){
+    case 'red':
+        console.log('color is red');
+        break;
+    case 'blue':
+        console.log('color is blue');
+        break;
+    default:
+        console.log('color is NOT red or blue');
+        break;
+}
+
+function addNums(num1,num2){
+    console.log(num1+num2);
+}
+addNums(5,4);
+
+function addNumsDefault(num1=1,num2=2){
+    console.log(num1+num2);
+}
+addNumsDefault();
+
+//矢印関数?
+const addNumsArrow = (num1=1,num2=2)=>{
+    return num1+num2;
+}
+console.log(addNumsArrow(4,5));
+
+const addNumsArrow1 = (num1=1,num2=2)=> num1+num2;
+console.log(addNumsArrow1(3,4));
+
+//Constructor function
+function Person(firstName,lastName,dob){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob=new Date(dob);
+/*
+    this.getBirthYear = function(){
+        return this.dob.getFullYear();
+    }
+    this.getFullName = function(){
+        return `${this.firstName} ${this.lastName}`; 
+    }
+*/
+}
+Person.prototype.getBirthYear = function(){
+    return this.dob.getFullYear();
+}
+Person.prototype.getFullName = function(){
+    return `${this.firstName} ${this.lastName}`; 
+}
+
+//こっちの方が一般的
+class Person1{
+    constructor(firstName,lastName,dob){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob=new Date(dob);
+    }
+    getBirthYear(){
+        return this.dob.getFullYear();
+    }
+    getFullName(){
+        return `${this.firstName} ${this.lastName}`; 
+    }
+}
+
+
+//instantiate object
+const person1 = new Person('John','Doe','4-3-1980');
+console.log(person1);
+console.log(person1.getBirthYear());
+console.log(person1.getFullName());
+
+const person1_1 = new Person1('John','Doe','4-3-1980');
+console.log(person1);
+
+//1.11.11
