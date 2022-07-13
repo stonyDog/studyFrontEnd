@@ -273,3 +273,71 @@ const person1_1 = new Person1('John','Doe','4-3-1980');
 console.log(person1);
 
 //1.11.11
+
+console.log(window);
+
+//Single element
+console.log(document.getElementById('my-form'));
+console.log(document.querySelector('.container'));
+console.log(document.querySelector('h1'));
+
+//multiple element
+console.log(document.querySelectorAll('.item'));
+console.log(document.getElementsByClassName('item'));
+console.log(document.getElementsByTagName('li'));
+
+const items = document.querySelectorAll('.item');
+items.forEach((item)=>console.log(item));
+
+const ul = document.querySelector('.items');
+
+//動的にHTMLを書き直す方法
+
+//消す魔法
+//ul.remove();
+//最後のみ消す魔法
+//ul.lastElementChild.remove();
+//文字変更方法
+//ul.firstElementChild.textContent='Hello';
+//ul.children[1].innerText = 'Brad';
+//ul.lastElementChild.innerHTML = '<h1>Hello</h1>';
+
+const btn = document.querySelector('.btn');
+btn.style.background = 'red';
+/*クリックした際の挙動を変更可
+btn.addEventListener('click',(e)=>{
+    //よくわからない魔法↓
+    e.preventDefault();
+    console.log('click');
+    document.querySelector('#my-form').style.background='#ccc';
+    document.querySelector('body').classList.add('bg-dark');
+    document.querySelector('.items').lastElementChild.innerHTML ='<h1>HELLO</h1>';
+});
+*/
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit',onSubmit);
+function onSubmit(e){
+    e.preventDefault();
+    console.log(nameInput.value);
+    
+    if(nameInput.value === '' || emailInput.value===''){
+        msg.classList.add('error');
+        msg.innerHTML = 'Please Enter fields';
+
+        setTimeout(()=>msg.remove(),3000);
+    }else{
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(
+            `${nameInput.value}:${emailInput.value}`));
+        userList.appendChild(li);
+        nameInput.value='';
+        emailInput.value='';
+        console.log('Success');
+    }
+}
