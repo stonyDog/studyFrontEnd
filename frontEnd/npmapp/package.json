@@ -1,0 +1,15 @@
+{
+  "name": "npmapp",
+  "version": "1.0.0",
+  "description": "Simple sample app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "stonyDog",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
